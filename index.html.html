@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Toleen Scarf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
+<style>
+  :root { --cream:#faf6f1; --dark:#3a2e2e; --rose:#c98a9e; --rose-dark:#b06f85; --gold:#c9a227; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Cairo",sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+  img{display:block;max-width:100%}
+  header{position:sticky;top:0;z-index:100;background:rgba(250,246,241,.9);backdrop-filter:blur(10px);border-bottom:1px solid #eee3d8}
+  .header-inner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-size:24px;font-weight:800;letter-spacing:.5px}
+  .brand em{font-family:"Playfair Display",serif;color:var(--rose-dark)}
+  nav a{color:var(--dark);text-decoration:none;font-weight:600;margin-right:26px;font-size:15px;transition:color .2s}
+  nav a:hover{color:var(--rose-dark)}
+  .cart-btn{background:var(--dark);color:#fff;border:none;padding:9px 22px;border-radius:50px;font-family:inherit;font-weight:600;font-size:14px;cursor:pointer;transition:background .2s}
+  .cart-btn:hover{background:var(--rose-dark)}
+  @media(max-width:800px){nav{display:none}}
+  .hero{max-width:1200px;margin:0 auto;padding:60px 24px 80px;display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center}
+  .hero-text .badge{display:inline-block;background:#f6e7ec;color:var(--rose-dark);padding:6px 18px;border-radius:50px;font-size:13px;font-weight:700;margin-bottom:20px}
+  .hero-text h1{font-size:clamp(34px,5vw,58px);font-weight:800;line-height:1.25;margin-bottom:18px}
+  .hero-text h1 span{color:var(--rose-dark)}
+  .hero-text p{font-size:17px;line-height:1.9;color:#7a6a6a;margin-bottom:30px;max-width:480px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .btn-main{background:var(--rose-dark);color:#fff;text-decoration:none;padding:14px 36px;border-radius:50px;font-weight:700;font-size:16px;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 20px rgba(176,111,133,.3);border:none;cursor:pointer;font-family:inherit}
+  .btn-main:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(176,111,133,.4)}
+  .btn-ghost{color:var(--dark);text-decoration:none;padding:14px 30px;border-radius:50px;font-weight:700;font-size:16px;border:2px solid #e5d5c8;transition:border-color .2s,color .2s;background:transparent;cursor:pointer;font-family:inherit}
+  .btn-ghost:hover{border-color:var(--rose-dark);color:var(--rose-dark)}
+  .hero-stats{display:flex;gap:36px;margin-top:40px}
+  .hero-stats b{font-size:26px;display:block;color:var(--rose-dark)}
+  .hero-stats span{font-size:13px;color:#9a8a8a}
+  .hero-img{position:relative}
+  .hero-img .main{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:250px 250px 24px 24px;box-shadow:0 25px 60px rgba(58,46,46,.18)}
+  .float-card{position:absolute;background:#fff;border-radius:16px;box-shadow:0 12px 30px rgba(58,46,46,.15);padding:12px 18px;font-size:14px;font-weight:700;display:flex;align-items:center;gap:10px;animation:floaty 3.5s ease-in-out infinite}
+  .float-card.one{bottom:60px;right:-20px}
+  .float-card.two{top:80px;left:-20px;animation-delay:1.6s}
+  .float-card .dot{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;background:#f6e7ec}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  @media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:30px}.float-card.one{right:10px}.float-card.two{left:10px}}
+  .marquee{background:var(--dark);color:var(--cream);overflow:hidden;padding:14px 0;white-space:nowrap}
+  .marquee-track{display:inline-block;animation:scroll 25s linear infinite}
+  .marquee-track span{margin:0 30px;font-size:15px;font-weight:600}
+  .marquee-track .star{color:var(--gold)}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(50%)}}
+  section{max-width:1200px;margin:0 auto;padding:80px 24px}
+  .sec-head{text-align:center;margin-bottom:50px}
+  .sec-head small{color:var(--rose-dark);font-weight:700;font-size:14px;letter-spacing:1px}
+  .sec-head h2{font-size:clamp(26px,4vw,40px);font-weight:800;margin-top:6px}
+  .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .cat{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:3/4;text-decoration:none}
+  .cat img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .cat:hover img{transform:scale(1.07)}
+  .cat .label{position:absolute;inset:auto 16px 16px 16px;background:rgba(255,255,255,.92);border-radius:14px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+  .cat .label b{font-size:19px;color:var(--dark)}
+  .cat .label span{color:var(--rose-dark);font-weight:700;font-size:14px}
+  @media(max-width:800px){.cats{grid-template-columns:1fr}.cat{aspect-ratio:16/10}}
+  .products-sec{background:#fff;border-radius:40px}
+  .prods{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .prod{background:var(--cream);border-radius:18px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+  .prod:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(58,46,46,.12)}
+  .prod .ph{position:relative;overflow:hidden;aspect-ratio:1/1.15}
+  .prod .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .prod:hover .ph img{transform:scale(1.08)}
+  .prod .tag{position:absolute;top:12px;right:12px;background:var(--rose-dark);color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:50px}
+  .prod .inf{padding:16px 18px 20px}
+  .prod .inf b{font-size:16px;display:block;margin-bottom:4px}
+  .prod .inf .cat-name{font-size:12px;color:#9a8a8a}
+  .prod .row{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+  .prod .price{color:var(--rose-dark);font-weight:800;font-size:17px}
+  .prod .add{background:var(--dark);color:#fff;text-decoration:none;font-size:13px;font-weight:700;padding:7px 16px;border-radius:50px;transition:background .2s;border:none;cursor:pointer;font-family:inherit}
+  .prod .add:hover{background:var(--rose-dark)}
+  @media(max-width:1000px){.prods{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.prods{grid-template-columns:1fr}}
+  .offer{background:linear-gradient(120deg,var(--rose-dark),#8e5468);border-radius:30px;color:#fff;text-align:center;padding:70px 24px!important;max-width:1152px}
+  .offer h2{font-size:clamp(26px,4vw,42px);font-weight:800;margin-bottom:12px}
+  .offer p{font-size:17px;opacity:.9;margin-bottom:28px}
+  .offer .btn-main{background:#fff;color:var(--rose-dark);box-shadow:none}
+  footer{background:var(--dark);color:#d8cfc9;margin-top:80px;position:relative}
+  .foot-inner{max-width:1200px;margin:0 auto;padding:60px 24px 30px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+  .foot-inner h3{color:#fff;font-size:22px;margin-bottom:12px}
+  .foot-inner p{line-height:1.9;font-size:14px}
+  .foot-inner h4{color:#fff;margin-bottom:14px;font-size:16px}
+  .foot-inner a{display:block;color:#d8cfc9;text-decoration:none;margin-bottom:10px;font-size:14px}
+  .foot-inner a:hover{color:var(--rose)}
+  .copy{text-align:center;padding:18px;border-top:1px solid #4d403f;font-size:13px}
+  @media(max-width:800px){.foot-inner{grid-template-columns:1fr}}
+  .whatsapp{position:fixed;bottom:24px;left:24px;z-index:100;width:58px;height:58px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,.4);text-decoration:none;transition:transform .2s}
+  .whatsapp:hover{transform:scale(1.1)}
+  .admin-trigger{position:fixed;bottom:90px;left:24px;z-index:99;width:42px;height:42px;background:rgba(58,46,46,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.3;transition:opacity .3s;border:none;color:#fff;font-size:18px}
+  .admin-trigger:hover{opacity:1;background:var(--rose-dark)}
+  .admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(5px)}
+  .admin-overlay.active{display:flex}
+  .admin-box{background:#fff;border-radius:24px;width:92%;max-width:900px;max-height:90vh;overflow-y:auto;padding:30px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+  .admin-box h2{color:var(--rose-dark);margin-bottom:20px;font-size:24px}
+  .admin-close{position:absolute;top:20px;left:20px;background:#f5f5f5;border:none;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;color:#666;transition:.2s}
+  .admin-close:hover{background:#ff4444;color:#fff}
+  .login-form{text-align:center;padding:40px 20px}
+  .login-form input{width:100%;max-width:320px;padding:14px 18px;border-radius:12px;border:2px solid #e5d5c8;font-family:inherit;font-size:16px;margin-bottom:16px;text-align:center}
+  .login-form input:focus{outline:none;border-color:var(--rose-dark)}
+  .login-form .error{color:#e74c3c;font-size:14px;margin-top:8px;display:none}
+  .admin-tabs{display:flex;gap:8px;margin-bottom:24px;border-bottom:2px solid #f0f0f0;padding-bottom:12px;flex-wrap:wrap}
+  .admin-tab{padding:10px 20px;border-radius:50px;border:none;background:#f5f5f5;cursor:pointer;font-family:inherit;font-weight:700;font-size:14px;transition:.2s;color:#666}
+  .admin-tab.active{background:var(--rose-dark);color:#fff}
+  .admin-tab:hover:not(.active){background:#e5d5c8}
+  .admin-panel{display:none}
+  .admin-panel.active{display:block}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+  @media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+  .form-group{display:flex;flex-direction:column}
+  .form-group label{font-size:13px;font-weight:700;color:#666;margin-bottom:6px}
+  .form-group input,.form-group select,.form-group textarea{padding:12px 14px;border-radius:12px;border:2px solid #e5d5c8;font-family:inherit;font-size:14px;transition:.2s}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--rose-dark)}
+  .form-group textarea{min-height:80px;resize:vertical}
+  .admin-list{display:flex;flex-direction:column;gap:12px}
+  .admin-item{display:flex;align-items:center;gap:14px;background:#faf6f1;padding:14px;border-radius:16px;border:1px solid #e5d5c8}
+  .admin-item img{width:60px;height:60px;object-fit:cover;border-radius:10px}
+  .admin-item .info{flex:1}
+  .admin-item .info b{font-size:15px;display:block}
+  .admin-item .info span{font-size:13px;color:#888}
+  .admin-item .actions{display:flex;gap:8px}
+  .admin-item .actions button{padding:6px 14px;border-radius:8px;border:none;font-family:inherit;font-weight:700;font-size:12px;cursor:pointer;transition:.2s}
+  .btn-edit{background:var(--gold);color:#fff}
+  .btn-del{background:#e74c3c;color:#fff}
+  .btn-edit:hover{opacity:.9}
+  .btn-del:hover{opacity:.9}
+  .reveal{opacity:0;transform:translateY(36px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.show{opacity:1;transform:translateY(0)}
+  .loading{text-align:center;padding:40px;color:#888}
+  .spinner{width:40px;height:40px;border:4px solid #f3f3f3;border-top:4px solid var(--rose-dark);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 16px}
+  @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+  .empty-state{text-align:center;padding:40px;color:#888}
+  .connection-error{background:#fff3f3;border:2px solid #e74c3c;border-radius:16px;padding:20px;margin:20px auto;max-width:600px;text-align:center}
+  .connection-error h3{color:#e74c3c;margin-bottom:10px}
+  .connection-error p{color:#666;font-size:14px;line-height:1.8}
+  .connection-error code{background:#1e1e1e;color:#4ec9b0;padding:12px;border-radius:8px;display:block;margin:10px 0;font-family:monospace;font-size:12px;direction:ltr;text-align:left}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">Toleen <em>Scarf</em></div>
+    <nav>
+      <a href="#home">الرئيسية</a>
+      <a href="#cats">الأقسام</a>
+      <a href="#products">المنتجات</a>
+      <a href="#contact">تواصلي معانا</a>
+    </nav>
+    <button class="cart-btn">🛍 السلة</button>
+  </div>
+</header>
+
+<div class="hero" id="home">
+  <div class="hero-text">
+    <span class="badge">✨ كولكشن جديد كل أسبوع</span>
+    <h1>أناقتك تبدأ من <span>طرحتك</span></h1>
+    <p>طُرح شيفون وقطن بألوان السيزون، إكسسوارات ذهبي وفضي، وميكب أوريجينال ١٠٠٪.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-main">تسوّقي دلوقتي</a>
+      <a href="#cats" class="btn-ghost">شوفي الأقسام</a>
+    </div>
+    <div class="hero-stats">
+      <div><b id="stat-products">+8</b><span>موديل طرحة</span></div>
+      <div><b>+2000</b><span>عميلة سعيدة</span></div>
+      <div><b>24h</b><span>شحن سريع</span></div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img class="main" id="hero-img" src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=900&q=80&auto=format&fit=crop" alt="طرح" />
+    <div class="float-card one"><span class="dot">🧕</span> طرح شيفون جديدة</div>
+    <div class="float-card two"><span class="dot">💄</span> ميكب أوريجينال</div>
+  </div>
+</div>
+
+<div class="marquee">
+  <div class="marquee-track" id="marquee-track">
+    <span>شحن لكل المحافظات</span><span class="star">✦</span>
+    <span>خامات أوريجينال</span><span class="star">✦</span>
+    <span>استبدال واسترجاع خلال 14 يوم</span><span class="star">✦</span>
+    <span>عروض أسبوعية</span><span class="star">✦</span>
+    <span>شحن لكل المحافظات</span><span class="star">✦</span>
+    <span>خامات أوريجينال</span><span class="star">✦</span>
+    <span>استبدال واسترجاع خلال 14 يوم</span><span class="star">✦</span>
+    <span>عروض أسبوعية</span><span class="star">✦</span>
+  </div>
+</div>
+
+<section id="cats">
+  <div class="sec-head reveal">
+    <small>تسوّقي حسب القسم</small>
+    <h2>أقسام المحل</h2>
+  </div>
+  <div class="cats">
+    <a class="cat reveal" href="#products">
+      <img id="cat-img-1" src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=800&q=80&auto=format&fit=crop" alt="طرح" />
+      <div class="label"><b>الطُرح</b><span>تسوّقي ←</span></div>
+    </a>
+    <a class="cat reveal" href="#products">
+      <img id="cat-img-2" src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80&auto=format&fit=crop" alt="إكسسوارات" />
+      <div class="label"><b>الإكسسوارات</b><span>تسوّقي ←</span></div>
+    </a>
+    <a class="cat reveal" href="#products">
+      <img id="cat-img-3" src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80&auto=format&fit=crop" alt="ميكب" />
+      <div class="label"><b>الميكب</b><span>تسوّقي ←</span></div>
+    </a>
+  </div>
+</section>
+
+<section class="products-sec" id="products">
+  <div class="sec-head reveal">
+    <small>الأكثر مبيعًا</small>
+    <h2>منتجاتنا المميزة</h2>
+  </div>
+  <div class="prods" id="products-grid">
+    <div class="loading"><div class="spinner"></div>جاري تحميل المنتجات...</div>
+  </div>
+  <div class="connection-error" id="connection-error" style="display:none;">
+    <h3>⚠️ مشكلة في الاتصال بقاعدة البيانات</h3>
+    <p>المشكلة غالباً بسبب إعدادات الأمان (Firestore Rules).<br>اعملي الخطوات دي:</p>
+    <code>rules_version = '2';<br>service cloud.firestore {<br>  match /databases/{database}/documents {<br>    match /{document=**} {<br>      allow read, write: if true;<br>    }<br>  }<br>}</code>
+    <p>روحي Firebase Console → Firestore Database → Rules → انسخي الكود ده → اضغطي Publish</p>
+    <button class="btn-main" onclick="location.reload()" style="margin-top:10px;">🔄 إعادة تحميل الصفحة</button>
+  </div>
+</section>
+
+<section class="offer reveal" id="offer-banner">
+  <h2 id="offer-title">🎀 خصم 25% على كولكشن الطُرح الجديد</h2>
+  <p id="offer-desc">العرض ساري لنهاية الأسبوع — اطلبي دلوقتي قبل نفاذ الكمية</p>
+  <a href="https://wa.me/201119898569?text=مرحبا%20أنا%20عايزة%20أطلب%20عرض%20الخصم" target="_blank" class="btn-main">اطلبي العرض</a>
+</section>
+
+<footer id="contact">
+  <div class="foot-inner">
+    <div>
+      <h3>Toleen Scarf</h3>
+      <p>محل متخصص في الطُرح والإكسسوارات والميكب. خامات مضمونة، أسعار مناسبة، وشحن سريع لكل المحافظات.</p>
+    </div>
+    <div>
+      <h4>روابط سريعة</h4>
+      <a href="#home">الرئيسية</a>
+      <a href="#cats">الأقسام</a>
+      <a href="#products">المنتجات</a>
+    </div>
+    <div>
+      <h4>تواصلي معانا</h4>
+      <a href="https://wa.me/201119898569" target="_blank">واتساب: 01119898569</a>
+      <a href="https://www.instagram.com/toleenscarf?igsh=MW9jMGw5Njl2NzNtMg==" target="_blank">إنستجرام: @toleenscarf</a>
+      <a href="https://www.facebook.com/share/1Er18sumNb/" target="_blank">فيسبوك: Toleen Scarf</a>
+    </div>
+  </div>
+  <div class="copy">© 2026 Toleen Scarf — جميع الحقوق محفوظة</div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/201119898569?text=أهلاً%20تولين%20سكارف%20حابب%20أستفسر%20عن%20المنتجات" target="_blank" aria-label="واتساب">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff">
+    <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4-.1.7.5l1 2.3c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.2.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4.1.2.1.7-.1 1.3z"/>
+  </svg>
+</a>
+
+<button class="admin-trigger" id="admin-trigger" title="لوحة التحكم">⚙️</button>
+
+<div class="admin-overlay" id="admin-overlay">
+  <div class="admin-box">
+    <button class="admin-close" id="admin-close">×</button>
+    <div id="login-screen">
+      <div class="login-form">
+        <h2>🔐 لوحة التحكم</h2>
+        <p style="color:#888;margin-bottom:24px;font-size:14px;">أدخل كلمة السر للوصول للوحة التحكم</p>
+        <input type="password" id="admin-pass" placeholder="كلمة السر" />
+        <br>
+        <button class="btn-main" id="login-btn" style="min-width:160px;">دخول</button>
+        <p class="error" id="login-error">كلمة السر غلط!</p>
+      </div>
+    </div>
+    <div id="dashboard-screen" style="display:none;">
+      <h2>⚙️ لوحة تحكم Toleen Scarf</h2>
+      <div id="admin-status" style="background:#f5f5f5;padding:12px 16px;border-radius:12px;margin-bottom:16px;font-size:14px;">🔄 جاري فحص الاتصال...</div>
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-tab="products-tab">🛍 المنتجات</button>
+        <button class="admin-tab" data-tab="offers-tab">🏷️ العروض</button>
+        <button class="admin-tab" data-tab="images-tab">🖼️ الصور</button>
+        <button class="admin-tab" data-tab="settings-tab">⚙️ الإعدادات</button>
+      </div>
+      <div class="admin-panel active" id="products-tab">
+        <div style="background:#e8f5e9;padding:12px 16px;border-radius:12px;margin-bottom:16px;">
+          <button class="btn-main" onclick="resetDefaultProducts()" style="background:#4caf50;">🔄 استرجاع المنتجات الافتراضية (8 منتجات)</button>
+          <p style="font-size:12px;color:#2e7d32;margin-top:8px;">اضغطي هنا لو قاعدة البيانات فاضية عشان تضيفي المنتجات الأصلية</p>
+        </div>
+        <h3 style="margin-bottom:16px;">➕ إضافة / تعديل منتج</h3>
+        <form id="product-form" class="form-grid">
+          <input type="hidden" id="prod-id" />
+          <div class="form-group">
+            <label>اسم المنتج</label>
+            <input type="text" id="prod-name" placeholder="مثال: طرحة شيفون سادة" required />
+          </div>
+          <div class="form-group">
+            <label>القسم</label>
+            <select id="prod-cat">
+              <option value="الطُرح">الطُرح</option>
+              <option value="الإكسسوارات">الإكسسوارات</option>
+              <option value="الميكب">الميكب</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>السعر (ج.م)</label>
+            <input type="number" id="prod-price" placeholder="150" required />
+          </div>
+          <div class="form-group">
+            <label>الصورة (رابط URL)</label>
+            <input type="url" id="prod-img" placeholder="https://..." required />
+          </div>
+          <div class="form-group">
+            <label>التاج (اختياري)</label>
+            <input type="text" id="prod-tag" placeholder="جديد / خصم 20% / الأكثر مبيعًا" />
+          </div>
+          <div class="form-group" style="display:flex;align-items:flex-end;">
+            <button type="submit" class="btn-main" style="width:100%;">💾 حفظ المنتج</button>
+          </div>
+        </form>
+        <hr style="border:none;border-top:1px solid #eee;margin:24px 0;">
+        <h3 style="margin-bottom:16px;">📋 قائمة المنتجات</h3>
+        <div class="admin-list" id="admin-products-list">
+          <div class="loading">جاري التحميل...</div>
+        </div>
+      </div>
+      <div class="admin-panel" id="offers-tab">
+        <h3 style="margin-bottom:16px;">➕ تعديل بانر العرض الرئيسي</h3>
+        <form id="offer-form" class="form-grid">
+          <div class="form-group">
+            <label>عنوان العرض</label>
+            <input type="text" id="offer-title-input" placeholder="🎀 خصم 25% على كولكشن الطُرح الجديد" required />
+          </div>
+          <div class="form-group">
+            <label>وصف العرض</label>
+            <input type="text" id="offer-desc-input" placeholder="العرض ساري لنهاية الأسبوع..." required />
+          </div>
+          <div class="form-group" style="display:flex;align-items:flex-end;">
+            <button type="submit" class="btn-main" style="width:100%;">💾 حفظ العرض</button>
+          </div>
+        </form>
+      </div>
+      <div class="admin-panel" id="images-tab">
+        <h3 style="margin-bottom:16px;">🖼️ تغيير صور الموقع</h3>
+        <form id="images-form" class="form-grid">
+          <div class="form-group">
+            <label>صورة الهيرو الرئيسية</label>
+            <input type="url" id="img-hero" placeholder="رابط صورة الهيرو..." />
+          </div>
+          <div class="form-group">
+            <label>صورة قسم الطُرح</label>
+            <input type="url" id="img-cat1" placeholder="رابط صورة قسم الطُرح..." />
+          </div>
+          <div class="form-group">
+            <label>صورة قسم الإكسسوارات</label>
+            <input type="url" id="img-cat2" placeholder="رابط صورة قسم الإكسسوارات..." />
+          </div>
+          <div class="form-group">
+            <label>صورة قسم الميكب</label>
+            <input type="url" id="img-cat3" placeholder="رابط صورة قسم الميكب..." />
+          </div>
+          <div class="form-group" style="grid-column:1/-1;display:flex;align-items:flex-end;">
+            <button type="submit" class="btn-main" style="width:100%;">💾 حفظ الصور</button>
+          </div>
+        </form>
+        <p style="margin-top:16px;color:#888;font-size:13px;">💡 نصيحة: استخدمي موقع <a href="https://imgur.com/upload" target="_blank" style="color:var(--rose-dark);">Imgur</a> أو <a href="https://postimages.org" target="_blank" style="color:var(--rose-dark);">Postimages</a> لرفع الصور ونسخ الرابط.</p>
+      </div>
+      <div class="admin-panel" id="settings-tab">
+        <h3 style="margin-bottom:16px;">⚙️ نص الشريط المتحرك</h3>
+        <form id="settings-form" class="form-grid">
+          <div class="form-group" style="grid-column:1/-1;">
+            <label>النصوص (افصلي بين كل نص والتاني بـ | )</label>
+            <input type="text" id="marquee-texts" placeholder="شحن لكل المحافظات | خامات أوريجينال | ..." />
+          </div>
+          <div class="form-group" style="grid-column:1/-1;display:flex;align-items:flex-end;">
+            <button type="submit" class="btn-main" style="width:100%;">💾 حفظ الإعدادات</button>
+          </div>
+        </form>
+        <hr style="border:none;border-top:1px solid #eee;margin:24px 0;">
+        <button class="btn-ghost" id="logout-btn" style="border-color:#e74c3c;color:#e74c3c;">🚪 تسجيل الخروج</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore, collection, doc, setDoc, updateDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyC2mpw3Wyq46rOWvGjbNNz2kVQdQvwFxhM",
+    authDomain: "toleen-scarf.firebaseapp.com",
+    projectId: "toleen-scarf",
+    storageBucket: "toleen-scarf.firebasestorage.app",
+    messagingSenderId: "25487659300",
+    appId: "1:25487659300:web:c208fcfde50d714bf1e3b1"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const ADMIN_PASSWORD = "toleen2026";
+
+  const DEFAULT_PRODUCTS = [
+    { id: "prod_default_1", name: "طرحة شيفون سادة", category: "الطُرح", price: 150, image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=700&q=80&auto=format&fit=crop", tag: "جديد" },
+    { id: "prod_default_2", name: "خاتم ذهبي أنيق", category: "الإكسسوارات", price: 120, image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=700&q=80&auto=format&fit=crop", tag: "" },
+    { id: "prod_default_3", name: "باليت ميكب كامل", category: "الميكب", price: 450, image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=700&q=80&auto=format&fit=crop", tag: "الأكثر مبيعًا" },
+    { id: "prod_default_4", name: "سيت فرش ميكب", category: "الميكب", price: 280, image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=700&q=80&auto=format&fit=crop", tag: "" },
+    { id: "prod_default_5", name: "برفان نسائي فاخر", category: "الميكب", price: 350, image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=700&q=80&auto=format&fit=crop", tag: "خصم 20%" },
+    { id: "prod_default_6", name: "حلق ذهبي مميز", category: "الإكسسوارات", price: 95, image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=700&q=80&auto=format&fit=crop", tag: "" },
+    { id: "prod_default_7", name: "مجموعة عناية كاملة", category: "الميكب", price: 520, image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=700&q=80&auto=format&fit=crop", tag: "" },
+    { id: "prod_default_8", name: "سكين كير روتين", category: "الميكب", price: 390, image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=700&q=80&auto=format&fit=crop", tag: "جديد" }
+  ];
+
+  let products = [];
+  let editingProductId = null;
+  let firebaseConnected = false;
+
+  const productsGrid = document.getElementById("products-grid");
+  const connectionError = document.getElementById("connection-error");
+  const adminStatus = document.getElementById("admin-status");
+
+  onSnapshot(collection(db, "products"), (snapshot) => {
+    products = [];
+    snapshot.forEach(docSnap => { products.push({ id: docSnap.id, ...docSnap.data() }); });
+    if (products.length === 0) {
+      products = [...DEFAULT_PRODUCTS];
+      renderProducts();
+      renderAdminProducts();
+      document.getElementById("stat-products").textContent = "+" + products.length;
+      if (adminStatus) { adminStatus.innerHTML = "⚠️ قاعدة البيانات فاضية. اضغطي 'استرجاع المنتجات الافتراضية'."; adminStatus.style.background = "#fff3e0"; }
+    } else {
+      renderProducts();
+      renderAdminProducts();
+      document.getElementById("stat-products").textContent = "+" + products.length;
+      firebaseConnected = true;
+      if (adminStatus) { adminStatus.innerHTML = "✅ الاتصال شغال — " + products.length + " منتج في قاعدة البيانات"; adminStatus.style.background = "#e8f5e9"; }
+    }
+  }, (err) => {
+    console.error("Firebase error:", err);
+    products = [...DEFAULT_PRODUCTS];
+    renderProducts();
+    renderAdminProducts();
+    document.getElementById("stat-products").textContent = "+" + products.length;
+    productsGrid.innerHTML = "";
+    connectionError.style.display = "block";
+    if (adminStatus) { adminStatus.innerHTML = "❌ خطأ في الاتصال: " + err.message; adminStatus.style.background = "#ffebee"; }
+  });
+
+  onSnapshot(doc(db, "settings", "offer"), (docSnap) => {
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+      if (data.title) document.getElementById("offer-title").textContent = data.title;
+      if (data.desc) document.getElementById("offer-desc").textContent = data.desc;
+      if (data.title) document.getElementById("offer-title-input").value = data.title;
+      if (data.desc) document.getElementById("offer-desc-input").value = data.desc;
+    }
+  });
+
+  onSnapshot(doc(db, "settings", "images"), (docSnap) => {
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+      if (data.hero) document.getElementById("hero-img").src = data.hero;
+      if (data.cat1) document.getElementById("cat-img-1").src = data.cat1;
+      if (data.cat2) document.getElementById("cat-img-2").src = data.cat2;
+      if (data.cat3) document.getElementById("cat-img-3").src = data.cat3;
+      if (data.hero) document.getElementById("img-hero").value = data.hero;
+      if (data.cat1) document.getElementById("img-cat1").value = data.cat1;
+      if (data.cat2) document.getElementById("img-cat2").value = data.cat2;
+      if (data.cat3) document.getElementById("img-cat3").value = data.cat3;
+    }
+  });
+
+  onSnapshot(doc(db, "settings", "marquee"), (docSnap) => {
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+      if (data.texts) {
+        document.getElementById("marquee-texts").value = data.texts.join(" | ");
+        renderMarquee(data.texts);
+      }
+    }
+  });
+
+  function renderMarquee(texts) {
+    const track = document.getElementById("marquee-track");
+    let html = "";
+    texts.forEach(t => { html += `<span>${t}</span><span class="star">✦</span>`; });
+    track.innerHTML = html + html;
+  }
+
+  function renderProducts() {
+    if (products.length === 0) { productsGrid.innerHTML = '<div class="empty-state">لا توجد منتجات حالياً</div>'; return; }
+    productsGrid.innerHTML = products.map(p => `
+      <div class="prod reveal">
+        <div class="ph">
+          ${p.tag ? `<span class="tag">${p.tag}</span>` : ""}
+          <img src="${p.image || "https://via.placeholder.com/400x460?text=No+Image"}" alt="${p.name}" loading="lazy" />
+        </div>
+        <div class="inf">
+          <b>${p.name}</b>
+          <span class="cat-name">قسم ${p.category}</span>
+          <div class="row">
+            <span class="price">${p.price} ج.م</span>
+            <a class="add" href="https://wa.me/201119898569?text=مرحبا%20أنا%20عايزة%20أطلب%20${encodeURIComponent(p.name)}" target="_blank">اطلبي</a>
+          </div>
+        </div>
+      </div>
+    `).join("");
+    document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+  }
+
+  function renderAdminProducts() {
+    const list = document.getElementById("admin-products-list");
+    if (products.length === 0) { list.innerHTML = '<div class="empty-state">لا توجد منتجات</div>'; return; }
+    list.innerHTML = products.map(p => `
+      <div class="admin-item">
+        <img src="${p.image || "https://via.placeholder.com/60"}" alt="" />
+        <div class="info">
+          <b>${p.name}</b>
+          <span>${p.category} — ${p.price} ج.م ${p.tag ? "• " + p.tag : ""}</span>
+        </div>
+        <div class="actions">
+          <button class="btn-edit" onclick='editProduct("${p.id}")'>تعديل</button>
+          <button class="btn-del" onclick='deleteProduct("${p.id}")'>حذف</button>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  window.resetDefaultProducts = async () => {
+    if (!confirm("هتضيفي 8 منتجات افتراضية لقاعدة البيانات؟")) return;
+    let success = 0, failed = 0;
+    for (const p of DEFAULT_PRODUCTS) {
+      try {
+        await setDoc(doc(db, "products", p.id), { name: p.name, category: p.category, price: p.price, image: p.image, tag: p.tag, createdAt: new Date().toISOString() });
+        success++;
+      } catch (err) { console.error("Error:", p.name, err); failed++; }
+    }
+    if (failed > 0) {
+      alert("⚠️ تم حفظ " + success + " منتج، وفشل " + failed + ".\n\nتأكدي إن Firestore Rules مفتوحة:\nallow read, write: if true;");
+    } else {
+      alert("✅ تم حفظ " + success + " منتج بنجاح في قاعدة البيانات!");
+    }
+  };
+
+  document.getElementById("product-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = {
+      name: document.getElementById("prod-name").value,
+      category: document.getElementById("prod-cat").value,
+      price: Number(document.getElementById("prod-price").value),
+      image: document.getElementById("prod-img").value,
+      tag: document.getElementById("prod-tag").value || "",
+      updatedAt: new Date().toISOString()
+    };
+    try {
+      if (editingProductId) {
+        await updateDoc(doc(db, "products", editingProductId), data);
+        editingProductId = null;
+        e.target.querySelector('button[type="submit"]').textContent = "💾 حفظ المنتج";
+      } else {
+        const newId = "prod_" + Date.now();
+        await setDoc(doc(db, "products", newId), { ...data, createdAt: new Date().toISOString() });
+      }
+      e.target.reset();
+      alert("✅ تم الحفظ بنجاح!");
+    } catch (err) {
+      alert("❌ حصل خطأ: " + err.message + "\n\nتأكدي إن Firestore Rules مفتوحة (allow read, write: if true)");
+    }
+  });
+
+  window.editProduct = (id) => {
+    const p = products.find(x => x.id === id);
+    if (!p) return;
+    editingProductId = id;
+    document.getElementById("prod-name").value = p.name;
+    document.getElementById("prod-cat").value = p.category;
+    document.getElementById("prod-price").value = p.price;
+    document.getElementById("prod-img").value = p.image;
+    document.getElementById("prod-tag").value = p.tag || "";
+    document.getElementById("product-form").querySelector('button[type="submit"]').textContent = "💾 تحديث المنتج";
+  };
+
+  window.deleteProduct = async (id) => {
+    if (!confirm("متأكدة أنك عايزة تمسحي المنتج ده؟")) return;
+    try { await deleteDoc(doc(db, "products", id)); alert("🗑️ تم الحذف!"); }
+    catch (err) { alert("❌ حصل خطأ: " + err.message); }
+  };
+
+  document.getElementById("offer-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    try {
+      await setDoc(doc(db, "settings", "offer"), { title: document.getElementById("offer-title-input").value, desc: document.getElementById("offer-desc-input").value, updatedAt: new Date().toISOString() });
+      alert("✅ تم حفظ العرض!");
+    } catch (err) { alert("❌ حصل خطأ: " + err.message); }
+  });
+
+  document.getElementById("images-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    try {
+      await setDoc(doc(db, "settings", "images"), { hero: document.getElementById("img-hero").value, cat1: document.getElementById("img-cat1").value, cat2: document.getElementById("img-cat2").value, cat3: document.getElementById("img-cat3").value, updatedAt: new Date().toISOString() });
+      alert("✅ تم حفظ الصور!");
+    } catch (err) { alert("❌ حصل خطأ: " + err.message); }
+  });
+
+  document.getElementById("settings-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const texts = document.getElementById("marquee-texts").value.split("|").map(t => t.trim()).filter(t => t);
+    try {
+      await setDoc(doc(db, "settings", "marquee"), { texts: texts, updatedAt: new Date().toISOString() });
+      alert("✅ تم حفظ الإعدادات!");
+    } catch (err) { alert("❌ حصل خطأ: " + err.message); }
+  });
+
+  const adminTrigger = document.getElementById("admin-trigger");
+  const adminOverlay = document.getElementById("admin-overlay");
+  const adminClose = document.getElementById("admin-close");
+  const loginScreen = document.getElementById("login-screen");
+  const dashboardScreen = document.getElementById("dashboard-screen");
+  const loginBtn = document.getElementById("login-btn");
+  const adminPass = document.getElementById("admin-pass");
+  const loginError = document.getElementById("login-error");
+  const logoutBtn = document.getElementById("logout-btn");
+
+  function openAdmin() {
+    adminOverlay.classList.add("active");
+    if (localStorage.getItem("toleen_admin") === "1") { showDashboard(); } else { showLogin(); }
+  }
+  function showLogin() { loginScreen.style.display = "block"; dashboardScreen.style.display = "none"; }
+  function showDashboard() { loginScreen.style.display = "none"; dashboardScreen.style.display = "block"; }
+
+  adminTrigger.addEventListener("click", openAdmin);
+  adminClose.addEventListener("click", () => adminOverlay.classList.remove("active"));
+  adminOverlay.addEventListener("click", (e) => { if (e.target === adminOverlay) adminOverlay.classList.remove("active"); });
+
+  loginBtn.addEventListener("click", () => {
+    if (adminPass.value === ADMIN_PASSWORD) { localStorage.setItem("toleen_admin", "1"); loginError.style.display = "none"; showDashboard(); }
+    else { loginError.style.display = "block"; }
+  });
+  adminPass.addEventListener("keypress", (e) => { if (e.key === "Enter") loginBtn.click(); });
+  logoutBtn.addEventListener("click", () => { localStorage.removeItem("toleen_admin"); showLogin(); });
+
+  document.addEventListener("keydown", (e) => { if (e.ctrlKey && e.shiftKey && e.key === "A") { e.preventDefault(); openAdmin(); } });
+
+  document.querySelectorAll(".admin-tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      document.querySelectorAll(".admin-tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".admin-panel").forEach(p => p.classList.remove("active"));
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.tab).classList.add("active");
+    });
+  });
+
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("show"); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { obs.observe(el); });
+</script>
+</body>
+</html>
